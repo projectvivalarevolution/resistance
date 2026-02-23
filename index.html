@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TERRA NOVA — Viva La Revolution</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+--red: #e8350a;
+--dark-red: #b82a08;
+--navy: #0d1528;
+--navy-mid: #111e36;
+--navy-light: #182440;
+--cream: #f0ead8;
+--white: #ffffff;
+--border: rgba(232,53,10,0.3);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(--navy);
+color: var(--white);
+font-family: 'Barlow', sans-serif;
+overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+content: '';
+position: fixed;
+inset: 0;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+opacity: 0.04;
+pointer-events: none;
+z-index: 9999;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 48px;
+height: 64px;
+background: rgba(13,21,40,0.92);
+backdrop-filter: blur(8px);
+border-bottom: 2px solid var(--border);
+}
+
+.nav-logo {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.6rem;
+letter-spacing: 0.15em;
+color: var(--red);
+display: flex;
+align-items: center;
+gap: 10px;
+text-decoration: none;
+}
+
+.nav-logo svg { width: 22px; height: 22px; }
+
+.nav-links {
+display: flex;
+gap: 40px;
+list-style: none;
+}
+
+.nav-links a {
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+font-size: 0.75rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(--cream);
+text-decoration: none;
+opacity: 0.7;
+transition: opacity 0.2s, color 0.2s;
+}
+
+.nav-links a:hover { opacity: 1; color: var(--red); }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: grid;
+grid-template-columns: 1fr 1fr;
+align-items: center;
+padding: 100px 48px 60px;
+position: relative;
+overflow: hidden;
+}
+
+/* diagonal red accent line */
+.hero::after {
+content: '';
+position: absolute;
+top: 0; bottom: 0;
+left: 55%;
+width: 4px;
+background: var(--red);
+transform: skewX(-4deg);
+opacity: 0.15;
+}
+
+/* large background text */
+.hero-bg-text {
+position: absolute;
+bottom: -40px;
+right: -20px;
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(120px, 20vw, 280px);
+color: rgba(232,53,10,0.04);
+line-height: 1;
+pointer-events: none;
+user-select: none;
+letter-spacing: -0.02em;
+}
+
+.hero-left { position: relative; z-index: 2; }
+
+.phase-tag {
+display: inline-block;
+background: var(--red);
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+font-size: 0.7rem;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+padding: 5px 14px;
+margin-bottom: 28px;
+clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%);
+animation: fadeDown 0.6s ease both;
+}
+
+.hero-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(80px, 13vw, 200px);
+line-height: 0.88;
+letter-spacing: 0.01em;
+color: var(--red);
+text-shadow:
+4px 4px 0 var(--dark-red),
+8px 8px 0 rgba(0,0,0,0.3);
+animation: fadeUp 0.7s 0.1s ease both;
+}
+
+.hero-subtitle {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(22px, 3.5vw, 52px);
+letter-spacing: 0.12em;
+color: var(--white);
+margin-top: 8px;
+margin-bottom: 28px;
+animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-body {
+max-width: 480px;
+font-size: 1rem;
+line-height: 1.75;
+color: rgba(240,234,216,0.75);
+border-left: 3px solid var(--red);
+padding-left: 20px;
+margin-bottom: 40px;
+animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.btn-primary {
+display: inline-flex;
+align-items: center;
+gap: 12px;
+background: var(--red);
+color: var(--white);
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+font-size: 1rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+text-decoration: none;
+padding: 16px 36px;
+border: 2px solid var(--red);
+clip-path: polygon(0 0, 100% 0, 94% 100%, 0% 100%);
+transition: background 0.2s, color 0.2s, transform 0.15s;
+animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.btn-primary:hover {
+background: transparent;
+color: var(--red);
+transform: translateY(-2px);
+}
+
+/* ── HERO RIGHT ── */
+.hero-right {
+position: relative;
+z-index: 2;
+display: flex;
+flex-direction: column;
+gap: 20px;
+padding-left: 60px;
+animation: fadeLeft 0.8s 0.3s ease both;
+}
+
+.card {
+background: var(--navy-mid);
+border: 2px solid var(--border);
+padding: 28px 32px;
+position: relative;
+}
+
+.card::before {
+content: '';
+position: absolute;
+top: -2px; left: -2px;
+width: 40px; height: 4px;
+background: var(--red);
+}
+
+.card-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.4rem;
+letter-spacing: 0.18em;
+color: var(--red);
+margin-bottom: 20px;
+}
+
+.tenet {
+display: flex;
+align-items: center;
+gap: 16px;
+padding: 10px 0;
+border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.tenet:last-child { border-bottom: none; }
+
+.tenet-num {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.1rem;
+color: var(--red);
+opacity: 0.7;
+min-width: 28px;
+}
+
+.tenet-label {
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+font-size: 0.85rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(--cream);
+}
+
+.card-cta {
+background: var(--red);
+border-color: var(--red);
+}
+
+.card-cta::before { display: none; }
+
+.card-cta .card-title {
+color: var(--white);
+font-size: 1.8rem;
+margin-bottom: 8px;
+}
+
+.card-cta p {
+color: rgba(255,255,255,0.8);
+font-size: 0.95rem;
+line-height: 1.5;
+}
+
+/* ── MANIFESTO SECTION ── */
+.section {
+padding: 100px 48px;
+position: relative;
+}
+
+.section-label {
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+font-size: 0.7rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(--red);
+display: flex;
+align-items: center;
+gap: 14px;
+margin-bottom: 16px;
+}
+
+.section-label::after {
+content: '';
+flex: 1;
+height: 1px;
+background: var(--border);
+max-width: 80px;
+}
+
+.section-num {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 0.85rem;
+opacity: 0.4;
+}
+
+.section-heading {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(42px, 6vw, 90px);
+letter-spacing: 0.04em;
+line-height: 1;
+margin-bottom: 60px;
+}
+
+/* ── MANIFESTO GRID ── */
+.manifesto-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2px;
+background: var(--border);
+}
+
+.manifesto-item {
+background: var(--navy);
+padding: 48px 36px;
+position: relative;
+overflow: hidden;
+transition: background 0.25s;
+cursor: default;
+}
+
+.manifesto-item:hover { background: var(--navy-light); }
+
+.manifesto-item:hover .m-icon { transform: scale(1.1) rotate(-5deg); color: var(--red); }
+
+.m-icon {
+width: 48px; height: 48px;
+color: rgba(232,53,10,0.6);
+margin-bottom: 24px;
+transition: transform 0.3s, color 0.3s;
+}
+
+.m-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.6rem;
+letter-spacing: 0.1em;
+margin-bottom: 14px;
+}
+
+.m-body {
+font-size: 0.9rem;
+line-height: 1.75;
+color: rgba(240,234,216,0.65);
+}
+
+.m-num {
+position: absolute;
+bottom: 16px; right: 20px;
+font-family: 'Bebas Neue', sans-serif;
+font-size: 4rem;
+color: rgba(255,255,255,0.04);
+line-height: 1;
+}
+
+/* ── DIRECTIVES ── */
+.directives-section {
+background: var(--navy-mid);
+border-top: 4px solid var(--red);
+border-bottom: 4px solid var(--red);
+}
+
+.directive-row {
+display: flex;
+align-items: flex-start;
+gap: 40px;
+padding: 36px 0;
+border-bottom: 1px solid rgba(255,255,255,0.05);
+transition: padding-left 0.3s;
+cursor: default;
+}
+
+.directive-row:last-child { border-bottom: none; }
+.directive-row:hover { padding-left: 16px; }
+
+.d-num {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 2.5rem;
+color: var(--red);
+opacity: 0.5;
+min-width: 60px;
+line-height: 1;
+}
+
+.d-content {}
+
+.d-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 900;
+font-size: 1.25rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+
+.d-desc {
+font-size: 0.9rem;
+line-height: 1.7;
+color: rgba(240,234,216,0.6);
+max-width: 600px;
+}
+
+/* ── JOIN ── */
+.join-section {
+text-align: center;
+padding: 120px 48px;
+position: relative;
+overflow: hidden;
+}
+
+.join-section::before {
+content: 'JOIN';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(150px, 25vw, 400px);
+color: rgba(232,53,10,0.04);
+white-space: nowrap;
+pointer-events: none;
+}
+
+.join-heading {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(48px, 8vw, 110px);
+line-height: 1;
+letter-spacing: 0.03em;
+margin-bottom: 24px;
+position: relative;
+}
+
+.join-heading span { color: var(--red); }
+
+.join-sub {
+font-size: 1.05rem;
+color: rgba(240,234,216,0.65);
+max-width: 520px;
+margin: 0 auto 48px;
+line-height: 1.75;
+position: relative;
+}
+
+.join-form {
+display: flex;
+gap: 0;
+max-width: 480px;
+margin: 0 auto;
+position: relative;
+}
+
+.join-form input {
+flex: 1;
+background: var(--navy-mid);
+border: 2px solid var(--border);
+border-right: none;
+color: var(--white);
+font-family: 'Barlow', sans-serif;
+font-size: 0.95rem;
+padding: 16px 20px;
+outline: none;
+transition: border-color 0.2s;
+}
+
+.join-form input:focus { border-color: var(--red); }
+.join-form input::placeholder { color: rgba(255,255,255,0.3); }
+
+.join-form button {
+background: var(--red);
+color: var(--white);
+border: 2px solid var(--red);
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+font-size: 0.85rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+padding: 16px 28px;
+cursor: pointer;
+transition: background 0.2s, transform 0.15s;
+white-space: nowrap;
+}
+
+.join-form button:hover { background: var(--dark-red); transform: scale(1.02); }
+
+/* ── FOOTER ── */
+footer {
+border-top: 6px solid var(--red);
+padding: 40px 48px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 20px;
+}
+
+.footer-logo {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 2rem;
+letter-spacing: 0.15em;
+color: var(--red);
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.footer-copy {
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 600;
+font-size: 0.7rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.35);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+from { opacity: 0; transform: translateY(-20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeLeft {
+from { opacity: 0; transform: translateX(40px); }
+to { opacity: 1; transform: translateX(0); }
+}
+
+/* scroll reveal */
+.reveal {
+opacity: 0;
+transform: translateY(40px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+nav { padding: 0 20px; }
+.nav-links { gap: 20px; }
+.hero { grid-template-columns: 1fr; padding: 90px 20px 60px; }
+.hero::after { display: none; }
+.hero-right { padding-left: 0; margin-top: 40px; }
+.section { padding: 70px 20px; }
+.directive-row { gap: 20px; }
+footer { padding: 30px 20px; flex-direction: column; text-align: center; }
+.join-form { flex-direction: column; }
+.join-form input { border-right: 2px solid var(--border); border-bottom: none; }
+.join-form input:focus { border-color: var(--red); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<a href="#" class="nav-logo">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg>
+TERRA NOVA
+</a>
+<ul class="nav-links">
+<li><a href="#manifesto">Manifesto</a></li>
+<li><a href="#directives">Directives</a></li>
+<li><a href="#join">Join</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg-text">NOVA</div>
+
+<div class="hero-left">
+<div class="phase-tag">Phase 01: The Awakening</div>
+<h1 class="hero-title">TERRA<br>NOVA</h1>
+<p class="hero-subtitle">Viva La Revolution</p>
+<p class="hero-body">A new dawn for the nation. We are tearing down the old structures to build something resilient, powerful, and truly united. The revolution starts here.</p>
+<a href="#join" class="btn-primary">
+Join The Vanguard
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+</div>
+
+<div class="hero-right">
+<div class="card">
+<div class="card-title">Core Tenets</div>
+<div class="tenet">
+<span class="tenet-num">01</span>
+<span class="tenet-label">Absolute Autonomy</span>
+</div>
+<div class="tenet">
+<span class="tenet-num">02</span>
+<span class="tenet-label">Unbreakable Unity</span>
+</div>
+<div class="tenet">
+<span class="tenet-num">03</span>
+<span class="tenet-label">Radical Progress</span>
+</div>
+</div>
+
+<div class="card card-cta">
+<div class="card-title">The Time Is Now</div>
+<p>History is written by those who show up.</p>
+</div>
+</div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="section" id="manifesto">
+<div class="section-label">
+<span class="section-num">02</span>
+Manifesto
+</div>
+<h2 class="section-heading reveal">OUR<br>PRINCIPLES</h2>
+
+<div class="manifesto-grid">
+<div class="manifesto-item reveal">
+<svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+<h3 class="m-title">Defend The Truth</h3>
+<p class="m-body">No more illusions. We operate in stark reality. Truth is our weapon and our shield against the decay of the past.</p>
+<span class="m-num">01</span>
+</div>
+
+<div class="manifesto-item reveal" style="transition-delay:0.1s">
+<svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+<h3 class="m-title">Swift Action</h3>
+<p class="m-body">Bureaucracy is death. We move with speed and purpose. Decisions are made and executed before the old guard can react.</p>
+<span class="m-num">02</span>
+</div>
+
+<div class="manifesto-item reveal" style="transition-delay:0.2s">
+<svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg>
+<h3 class="m-title">Burn the Obsolete</h3>
+<p class="m-body">If it doesn't serve the future, it must be dismantled. We carry forward only what empowers us.</p>
+<span class="m-num">03</span>
+</div>
+</div>
+</section>
+
+<!-- DIRECTIVES -->
+<section class="section directives-section" id="directives">
+<div class="section-label">
+<span class="section-num">03</span>
+Directives
+</div>
+<h2 class="section-heading reveal">THE<br>ORDERS</h2>
+
+<div class="directive-row reveal">
+<div class="d-num">01</div>
+<div class="d-content">
+<div class="d-title">Organize Your District</div>
+<p class="d-desc">Find the like-minded in your area. Build cells of committed individuals. Unity is strength — fragmentation is the enemy's greatest weapon.</p>
+</div>
+</div>
+
+<div class="directive-row reveal" style="transition-delay:0.1s">
+<div class="d-num">02</div>
+<div class="d-content">
+<div class="d-title">Amplify The Message</div>
+<p class="d-desc">Share the manifesto. Spread the word through every channel available. Every new voice joined is a crack in the old foundation.</p>
+</div>
+</div>
+
+<div class="directive-row reveal" style="transition-delay:0.2s">
+<div class="d-num">03</div>
+<div class="d-content">
+<div class="d-title">Train And Prepare</div>
+<p class="d-desc">Mental discipline, physical readiness, strategic thinking. The vanguard is sharp in mind and body, ready for whatever the dawn demands.</p>
+</div>
+</div>
+
+<div class="directive-row reveal" style="transition-delay:0.3s">
+<div class="d-num">04</div>
+<div class="d-content">
+<div class="d-title">Hold The Line</div>
+<p class="d-desc">When pressure comes — and it will — the vanguard does not break. We have committed to the long game. Endurance is a revolutionary act.</p>
+</div>
+</div>
+</section>
+
+<!-- JOIN -->
+<section class="join-section" id="join">
+<h2 class="join-heading reveal">JOIN THE<br><span>RESISTANCE</span></h2>
+<p class="join-sub reveal" style="transition-delay:0.1s">History doesn't wait. The revolution is being built right now, by people who showed up. Will you be one of them?</p>
+<!--
+<div class="join-form reveal" style="transition-delay:0.2s">
+<input type="email" placeholder="Enter your email address">
+<button type="button">Enlist Now</button>
+</div>
+</section>
+-->
+<!-- FOOTER -->
+<footer>
+<div class="footer-logo">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg>
+TERRA NOVA
+</div>
+<div class="footer-copy">© 2026 The People. All rights reserved.</div>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(e => {
+if (e.isIntersecting) {
+e.target.classList.add('visible');
+observer.unobserve(e.target);
+}
+});
+}, { threshold: 0.12 });
+reveals.forEach(r => observer.observe(r));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+a.addEventListener('click', e => {
+e.preventDefault();
+const target = document.querySelector(a.getAttribute('href'));
+if (target) target.scrollIntoView({ behavior: 'smooth' });
+});
+});
+</script>
+</body>
+</html>
