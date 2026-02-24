@@ -3,932 +3,387 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TERRA NOVA — Viva La Revolution</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<title>TERRA NOVA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --red: #e8350a;
-  --dark-red: #b82a08;
-  --navy: #0d1528;
-  --navy-mid: #111e36;
-  --navy-light: #182440;
-  --cream: #f0ead8;
-  --white: #ffffff;
-  --border: rgba(232,53,10,0.3);
-}
-
-html { scroll-behavior: smooth; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--navy);
-  color: var(--white);
-  font-family: 'Barlow', sans-serif;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 9999;
+background: #0d1528;
+color: #fff;
+font-family: 'Barlow', sans-serif;
 }
 
 /* NAV */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 48px;
-  height: 64px;
-  background: rgba(13,21,40,0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 2px solid var(--border);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 18px 48px;
+border-bottom: 2px solid rgba(232,53,10,0.3);
+position: sticky;
+top: 0;
+background: #0d1528;
+z-index: 10;
 }
 
-.nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
-  letter-spacing: 0.15em;
-  color: var(--red);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
+.logo {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.5rem;
+letter-spacing: 0.15em;
+color: #e8350a;
+text-decoration: none;
 }
 
-.nav-logo svg { width: 22px; height: 22px; }
-
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-  align-items: center;
-}
-
+.nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cream);
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.2s, color 0.2s;
+color: #ccc;
+text-decoration: none;
+font-size: 0.8rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+font-weight: 600;
 }
-.nav-links a:hover { opacity: 1; color: var(--red); }
-
-/* TikTok nav link */
-.nav-tiktok {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--cream);
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.2s, color 0.2s;
-}
-.nav-tiktok:hover { opacity: 1; color: var(--red); }
-.nav-tiktok svg { width: 16px; height: 16px; }
+.nav-links a:hover { color: #e8350a; }
 
 /* HERO */
 .hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 100px 48px 60px;
-  position: relative;
-  overflow: hidden;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 60px;
+padding: 80px 48px;
+align-items: center;
 }
-
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 55%;
-  width: 4px;
-  background: var(--red);
-  transform: skewX(-4deg);
-  opacity: 0.15;
-}
-
-.hero-bg-text {
-  position: absolute;
-  bottom: -40px;
-  right: -20px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(120px, 20vw, 280px);
-  color: rgba(232,53,10,0.04);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.02em;
-}
-
-.hero-left { position: relative; z-index: 2; }
 
 .phase-tag {
-  display: inline-block;
-  background: var(--red);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  margin-bottom: 28px;
-  clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%);
-  animation: fadeDown 0.6s ease both;
+display: inline-block;
+background: #e8350a;
+font-size: 0.7rem;
+font-weight: 600;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+padding: 5px 14px;
+margin-bottom: 20px;
 }
 
 .hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(80px, 13vw, 200px);
-  line-height: 0.88;
-  letter-spacing: 0.01em;
-  color: var(--red);
-  text-shadow: 4px 4px 0 var(--dark-red), 8px 8px 0 rgba(0,0,0,0.3);
-  animation: fadeUp 0.7s 0.1s ease both;
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(80px, 12vw, 180px);
+line-height: 0.9;
+color: #e8350a;
+text-shadow: 5px 5px 0 #8b1f06;
 }
 
 .hero-subtitle {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(22px, 3.5vw, 52px);
-  letter-spacing: 0.12em;
-  color: var(--white);
-  margin-top: 8px;
-  margin-bottom: 28px;
-  animation: fadeUp 0.7s 0.2s ease both;
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(20px, 3vw, 44px);
+letter-spacing: 0.12em;
+margin: 10px 0 24px;
 }
 
 .hero-body {
-  max-width: 480px;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: rgba(240,234,216,0.75);
-  border-left: 3px solid var(--red);
-  padding-left: 20px;
-  margin-bottom: 40px;
-  animation: fadeUp 0.7s 0.3s ease both;
+color: rgba(255,255,255,0.7);
+line-height: 1.75;
+border-left: 3px solid #e8350a;
+padding-left: 16px;
+margin-bottom: 36px;
+max-width: 440px;
 }
 
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--red);
-  color: var(--white);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 16px 36px;
-  border: 2px solid var(--red);
-  clip-path: polygon(0 0, 100% 0, 94% 100%, 0% 100%);
-  transition: background 0.2s, color 0.2s, transform 0.15s;
-  animation: fadeUp 0.7s 0.4s ease both;
+.btn {
+display: inline-block;
+background: #e8350a;
+color: #fff;
+text-decoration: none;
+font-weight: 600;
+font-size: 0.9rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+padding: 14px 32px;
+border: 2px solid #e8350a;
+transition: background 0.2s, color 0.2s;
 }
-.btn-primary:hover { background: transparent; color: var(--red); transform: translateY(-2px); }
-
-/* HERO RIGHT */
-.hero-right {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-left: 60px;
-  animation: fadeLeft 0.8s 0.3s ease both;
-}
-
-/* FIST PHOTO */
-.fist-photo-wrap {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border: 2px solid var(--border);
-}
-
-.fist-photo-wrap img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-  filter: grayscale(20%) contrast(1.15) brightness(0.9);
-  transition: transform 0.6s ease, filter 0.4s ease;
-}
-.fist-photo-wrap:hover img {
-  transform: scale(1.04);
-  filter: grayscale(0%) contrast(1.2) brightness(0.95);
-}
-
-/* Red overlay tint */
-.fist-photo-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(232,53,10,0.18) 0%,
-    rgba(13,21,40,0.35) 100%
-  );
-  pointer-events: none;
-}
-
-.fist-photo-caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  z-index: 2;
-  padding: 10px 14px;
-  background: linear-gradient(transparent, rgba(13,21,40,0.85));
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(240,234,216,0.55);
-}
-
-/* Fallback if image fails */
-.fist-photo-fallback {
-  width: 100%;
-  height: 280px;
-  background: var(--navy-light);
-  border: 2px dashed var(--border);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  color: rgba(232,53,10,0.4);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 20px;
-}
+.btn:hover { background: transparent; color: #e8350a; }
 
 /* CARDS */
 .card {
-  background: var(--navy-mid);
-  border: 2px solid var(--border);
-  padding: 28px 32px;
-  position: relative;
+background: #111e36;
+border: 2px solid rgba(232,53,10,0.3);
+border-top: 3px solid #e8350a;
+padding: 28px;
+margin-bottom: 20px;
 }
-.card::before {
-  content: '';
-  position: absolute;
-  top: -2px; left: -2px;
-  width: 40px; height: 4px;
-  background: var(--red);
-}
+
 .card-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.18em;
-  color: var(--red);
-  margin-bottom: 20px;
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.3rem;
+letter-spacing: 0.15em;
+color: #e8350a;
+margin-bottom: 16px;
 }
+
 .tenet {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+display: flex;
+gap: 14px;
+align-items: center;
+padding: 10px 0;
+border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .tenet:last-child { border-bottom: none; }
-.tenet-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.1rem;
-  color: var(--red);
-  opacity: 0.7;
-  min-width: 28px;
-}
-.tenet-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cream);
-}
-.card-cta { background: var(--red); border-color: var(--red); }
-.card-cta::before { display: none; }
-.card-cta .card-title { color: var(--white); font-size: 1.8rem; margin-bottom: 8px; }
-.card-cta p { color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5; }
+.tenet-num { color: #e8350a; font-weight: 600; font-size: 0.85rem; opacity: 0.7; }
+.tenet-label { font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; }
 
-/* SECTION */
-.section {
-  padding: 100px 48px;
-  position: relative;
-}
+.card-red { background: #e8350a; border-color: #e8350a; }
+.card-red .card-title { color: #fff; font-size: 1.6rem; }
+.card-red p { color: rgba(255,255,255,0.85); line-height: 1.6; }
+
+/* SECTIONS */
+section { padding: 80px 48px; }
+
 .section-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--red);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
-}
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-  max-width: 80px;
-}
-.section-num { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; opacity: 0.4; }
-.section-heading {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(42px, 6vw, 90px);
-  letter-spacing: 0.04em;
-  line-height: 1;
-  margin-bottom: 60px;
+font-size: 0.7rem;
+font-weight: 600;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: #e8350a;
+margin-bottom: 12px;
 }
 
-/* MANIFESTO GRID */
-.manifesto-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2px;
-  background: var(--border);
+.section-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(40px, 6vw, 80px);
+letter-spacing: 0.05em;
+line-height: 1;
+margin-bottom: 50px;
 }
-.manifesto-item {
-  background: var(--navy);
-  padding: 48px 36px;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.25s;
-  cursor: default;
+
+/* MANIFESTO CARDS */
+.grid-3 {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 20px;
 }
-.manifesto-item:hover { background: var(--navy-light); }
-.manifesto-item:hover .m-icon { transform: scale(1.1) rotate(-5deg); color: var(--red); }
-.m-icon {
-  width: 48px; height: 48px;
-  color: rgba(232,53,10,0.6);
-  margin-bottom: 24px;
-  transition: transform 0.3s, color 0.3s;
+
+.m-card {
+background: #111e36;
+border: 2px solid rgba(232,53,10,0.2);
+padding: 36px 28px;
+transition: border-color 0.2s, transform 0.2s;
 }
-.m-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.1em; margin-bottom: 14px; }
-.m-body { font-size: 0.9rem; line-height: 1.75; color: rgba(240,234,216,0.65); }
-.m-num {
-  position: absolute; bottom: 16px; right: 20px;
-  font-family: 'Bebas Neue', sans-serif; font-size: 4rem;
-  color: rgba(255,255,255,0.04); line-height: 1;
+.m-card:hover { border-color: #e8350a; transform: translateY(-4px); }
+
+.m-card h3 {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.5rem;
+letter-spacing: 0.1em;
+margin-bottom: 12px;
 }
+
+.m-card p { color: rgba(255,255,255,0.65); line-height: 1.7; font-size: 0.9rem; }
+.m-icon { font-size: 2rem; margin-bottom: 18px; }
 
 /* DIRECTIVES */
-.directives-section {
-  background: var(--navy-mid);
-  border-top: 4px solid var(--red);
-  border-bottom: 4px solid var(--red);
+.directives-section { background: #111e36; border-top: 4px solid #e8350a; border-bottom: 4px solid #e8350a; }
+
+.directive {
+display: flex;
+gap: 28px;
+padding: 28px 0;
+border-bottom: 1px solid rgba(255,255,255,0.06);
+transition: padding-left 0.25s;
 }
-.directive-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px;
-  padding: 36px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  transition: padding-left 0.3s;
-  cursor: default;
-}
-.directive-row:last-child { border-bottom: none; }
-.directive-row:hover { padding-left: 16px; }
+.directive:last-child { border-bottom: none; }
+.directive:hover { padding-left: 12px; }
+
 .d-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
-  color: var(--red);
-  opacity: 0.5;
-  min-width: 60px;
-  line-height: 1;
+font-family: 'Bebas Neue', sans-serif;
+font-size: 2.2rem;
+color: #e8350a;
+opacity: 0.5;
+min-width: 52px;
+line-height: 1;
 }
+
 .d-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 1.25rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+font-weight: 700;
+font-size: 1rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+margin-bottom: 6px;
 }
-.d-desc { font-size: 0.9rem; line-height: 1.7; color: rgba(240,234,216,0.6); max-width: 600px; }
+
+.d-desc { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.7; max-width: 560px; }
 
 /* JOIN */
-.join-section {
-  text-align: center;
-  padding: 120px 48px;
-  position: relative;
-  overflow: hidden;
-}
-.join-section::before {
-  content: 'JOIN';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(150px, 25vw, 400px);
-  color: rgba(232,53,10,0.04);
-  white-space: nowrap;
-  pointer-events: none;
-}
-.join-heading {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(48px, 8vw, 110px);
-  line-height: 1;
-  letter-spacing: 0.03em;
-  margin-bottom: 24px;
-  position: relative;
-}
-.join-heading span { color: var(--red); }
-.join-sub {
-  font-size: 1.05rem;
-  color: rgba(240,234,216,0.65);
-  max-width: 520px;
-  margin: 0 auto 48px;
-  line-height: 1.75;
-  position: relative;
+.join-section { text-align: center; }
+
+.join-section h2 {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(48px, 8vw, 100px);
+letter-spacing: 0.04em;
+margin-bottom: 20px;
 }
 
-/* EMAIL FORM */
-.contact-form-wrap {
-  max-width: 560px;
-  margin: 0 auto 40px;
-  position: relative;
-  z-index: 2;
-  text-align: left;
-}
-.contact-form-wrap h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 0.15em;
-  color: var(--cream);
-  margin-bottom: 20px;
-  text-align: center;
-}
-.contact-form textarea {
-  width: 100%;
-  background: var(--navy-mid);
-  border: 2px solid var(--border);
-  color: var(--white);
-  font-family: 'Barlow', sans-serif;
-  font-size: 0.95rem;
-  padding: 16px 20px;
-  outline: none;
-  resize: vertical;
-  min-height: 120px;
-  transition: border-color 0.2s;
-  display: block;
-  margin-bottom: 12px;
-}
-.contact-form textarea:focus { border-color: var(--red); }
-.contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
-.form-actions { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; }
-.btn-send {
-  background: var(--red);
-  color: var(--white);
-  border: 2px solid var(--red);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 14px 32px;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-  clip-path: polygon(0 0, 100% 0, 94% 100%, 0% 100%);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-.btn-send:hover { background: var(--dark-red); transform: translateY(-2px); }
-.form-note {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.3);
-  text-align: center;
-  margin-top: 10px;
-}
-.form-note a { color: rgba(232,53,10,0.7); }
-.form-success {
-  display: none;
-  background: rgba(232,53,10,0.12);
-  border: 2px solid var(--red);
-  padding: 20px;
-  text-align: center;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  color: var(--cream);
-  margin-top: 12px;
-}
+.join-section h2 span { color: #e8350a; }
+.join-section p { color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto 36px; line-height: 1.75; }
 
-/* SOCIAL + DONATE ROW */
-.action-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 2;
+.join-form { display: flex; max-width: 440px; margin: 0 auto; }
+.join-form input {
+flex: 1;
+padding: 14px 18px;
+background: #111e36;
+border: 2px solid rgba(232,53,10,0.3);
+border-right: none;
+color: #fff;
+font-family: 'Barlow', sans-serif;
+font-size: 0.95rem;
+outline: none;
 }
-
-.btn-tiktok {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: transparent;
-  color: var(--white);
-  border: 2px solid rgba(255,255,255,0.25);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 14px 28px;
-  clip-path: polygon(0 0, 100% 0, 94% 100%, 0% 100%);
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
+.join-form input:focus { border-color: #e8350a; }
+.join-form input::placeholder { color: rgba(255,255,255,0.3); }
+.join-form button {
+background: #e8350a;
+color: #fff;
+border: 2px solid #e8350a;
+padding: 14px 24px;
+font-family: 'Barlow', sans-serif;
+font-weight: 700;
+font-size: 0.85rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+cursor: pointer;
+transition: background 0.2s;
 }
-.btn-tiktok svg { width: 18px; height: 18px; flex-shrink: 0; }
-.btn-tiktok:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
-
-.btn-donate {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 36px;
-  background-color: var(--red);
-  color: #ffffff;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-align: center;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 2px solid var(--red);
-  clip-path: polygon(0 0, 100% 0, 94% 100%, 0% 100%);
-  transition: background 0.2s, color 0.2s, transform 0.15s;
-  position: relative;
-  z-index: 2;
-}
-.btn-donate:hover { background: transparent; color: var(--red); transform: translateY(-2px); }
+.join-form button:hover { background: #b82a08; }
 
 /* FOOTER */
 footer {
-  border-top: 6px solid var(--red);
-  padding: 40px 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
-  letter-spacing: 0.15em;
-  color: var(--red);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.footer-logo svg { width: 24px; height: 24px; }
-
-.footer-social {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.footer-social a {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.footer-social a:hover { color: var(--red); }
-.footer-social svg { width: 16px; height: 16px; }
-
-.footer-copy {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 600;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+border-top: 5px solid #e8350a;
+padding: 36px 48px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 16px;
 }
 
-/* ANIMATIONS */
-@keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeUp   { from { opacity:0; transform:translateY(30px);  } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeLeft { from { opacity:0; transform:translateX(40px);  } to { opacity:1; transform:translateX(0); } }
-.reveal { opacity:0; transform:translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity:1; transform:translateY(0); }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.15em; color: #e8350a; }
+.footer-copy { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  .nav-links { gap: 16px; }
-  .hero { grid-template-columns: 1fr; padding: 90px 20px 60px; }
-  .hero::after { display: none; }
-  .hero-right { padding-left: 0; margin-top: 40px; }
-  .section { padding: 70px 20px; }
-  .directive-row { gap: 20px; }
-  footer { padding: 30px 20px; flex-direction: column; text-align: center; }
-  .action-row { flex-direction: column; }
+@media (max-width: 700px) {
+nav { padding: 16px 20px; }
+.nav-links { gap: 16px; }
+.hero { grid-template-columns: 1fr; padding: 60px 20px; gap: 40px; }
+section { padding: 60px 20px; }
+.join-form { flex-direction: column; }
+.join-form input { border-right: 2px solid rgba(232,53,10,0.3); border-bottom: none; }
+footer { padding: 28px 20px; flex-direction: column; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/>
-    </svg>
-    TERRA NOVA
-  </a>
-  <ul class="nav-links">
-    <li><a href="#manifesto">Manifesto</a></li>
-    <li><a href="#directives">Directives</a></li>
-    <li><a href="#join">Join</a></li>
-    <li>
-      <a href="https://www.tiktok.com/@viva.la.rev0luti0n" target="_blank" rel="noopener noreferrer" class="nav-tiktok">
-        <!-- TikTok icon -->
-        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/>
-        </svg>
-        @viva.la.rev0luti0n
-      </a>
-    </li>
-  </ul>
+<a href="#" class="logo">🔥 TERRA NOVA</a>
+<ul class="nav-links">
+<li><a href="#manifesto">Manifesto</a></li>
+<li><a href="#directives">Directives</a></li>
+<li><a href="#join">Join</a></li>
+</ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-text">NOVA</div>
+<div>
+<div class="phase-tag">Phase 01: The Awakening</div>
+<h1 class="hero-title">TERRA<br>NOVA</h1>
+<p class="hero-subtitle">Viva La Revolution</p>
+<p class="hero-body">A new dawn for the nation. We are tearing down the old structures to build something resilient, powerful, and truly united. The revolution starts here.</p>
+<a href="#join" class="btn">Join The Vanguard →</a>
+</div>
 
-  <div class="hero-left">
-    <div class="phase-tag">Phase 01: The Awakening</div>
-    <h1 class="hero-title">TERRA<br>NOVA</h1>
-    <p class="hero-subtitle">Viva La Revolution</p>
-    <p class="hero-body">A new dawn for the nation. We are tearing down the old structures to build something resilient, powerful, and truly united. The revolution starts here.</p>
-    <a href="#join" class="btn-primary">
-      Join The Vanguard
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-
-  <div class="hero-right">
-    
-    <!--
-      PROTEST FIST PHOTO
-      Source: Unsplash (free, no attribution required under Unsplash license)
-      Photo by Nitish Meena — raised fist protest image
-      If this image stops working, replace the src with any photo URL
-      or upload your own image and use: src="your-photo.jpg"
-    -->
-    <!--
-    <div class="fist-photo-wrap">
-      <img
-        src="Unsplash (free, no attribution required under Unsplash license)
-      Photo by Nitish Meena — raised fist protest image"
-        alt="Raised fist — symbol of resistance and solidarity"
-        onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='flex';"
-      />
-      <div class="fist-photo-caption">Rise Up — The People United</div>
-    </div>
-    <!-- fallback if photo fails to load -->
-    <!--
-    <div class="fist-photo-fallback">
-      ✊ Add your own protest photo here
-    </div> 
-     -->
-    <div class="card">
-      <div class="card-title">Core Tenets</div>
-      <div class="tenet">
-        <span class="tenet-num">01</span>
-        <span class="tenet-label">Absolute Autonomy</span>
-      </div>
-      <div class="tenet">
-        <span class="tenet-num">02</span>
-        <span class="tenet-label">Unbreakable Unity</span>
-      </div>
-      <div class="tenet">
-        <span class="tenet-num">03</span>
-        <span class="tenet-label">Radical Progress</span>
-      </div>
-    </div>
-
-    <div class="card card-cta">
-      <div class="card-title">The Time Is Now</div>
-      <p>History is written by those who show up.</p>
-    </div>
-  </div>
+<div>
+<div class="card">
+<div class="card-title">Core Tenets</div>
+<div class="tenet"><span class="tenet-num">01</span><span class="tenet-label">Absolute Autonomy</span></div>
+<div class="tenet"><span class="tenet-num">02</span><span class="tenet-label">Unbreakable Unity</span></div>
+<div class="tenet"><span class="tenet-num">03</span><span class="tenet-label">Radical Progress</span></div>
+</div>
+<div class="card card-red">
+<div class="card-title">The Time Is Now</div>
+<p>History is written by those who show up.</p>
+</div>
+</div>
 </section>
 
-<!-- MANIFESTO -->
-<section class="section" id="manifesto">
-  <div class="section-label">
-    <span class="section-num">02</span>
-    Manifesto
-  </div>
-  <h2 class="section-heading reveal">OUR<br>PRINCIPLES</h2>
-
-  <div class="manifesto-grid">
-    <div class="manifesto-item reveal">
-      <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
-      </svg>
-      <h3 class="m-title">Defend The Truth</h3>
-      <p class="m-body">No more illusions. We operate in stark reality. Truth is our weapon and our shield against the decay of the past.</p>
-      <span class="m-num">01</span>
-    </div>
-
-    <div class="manifesto-item reveal" style="transition-delay:0.1s">
-      <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
-      </svg>
-      <h3 class="m-title">Swift Action</h3>
-      <p class="m-body">Bureaucracy is death. We move with speed and purpose. Decisions are made and executed before the old guard can react.</p>
-      <span class="m-num">02</span>
-    </div>
-
-    <div class="manifesto-item reveal" style="transition-delay:0.2s">
-      <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/>
-      </svg>
-      <h3 class="m-title">Burn the Obsolete</h3>
-      <p class="m-body">If it doesn't serve the future, it must be dismantled. We carry forward only what empowers us.</p>
-      <span class="m-num">03</span>
-    </div>
-  </div>
+<section id="manifesto">
+<div class="section-label">02 — Manifesto</div>
+<h2 class="section-title">OUR PRINCIPLES</h2>
+<div class="grid-3">
+<div class="m-card">
+<div class="m-icon">🛡️</div>
+<h3>Defend The Truth</h3>
+<p>No more illusions. We operate in stark reality. Truth is our weapon and our shield against the decay of the past.</p>
+</div>
+<div class="m-card">
+<div class="m-icon">⚡</div>
+<h3>Swift Action</h3>
+<p>Bureaucracy is death. We move with speed and purpose. Decisions are made and executed before the old guard can react.</p>
+</div>
+<div class="m-card">
+<div class="m-icon">🔥</div>
+<h3>Burn the Obsolete</h3>
+<p>If it doesn't serve the future, it must be dismantled. We carry forward only what empowers us.</p>
+</div>
+</div>
 </section>
 
-<!-- DIRECTIVES -->
-<section class="section directives-section" id="directives">
-  <div class="section-label">
-    <span class="section-num">03</span>
-    Directives
-  </div>
-  <h2 class="section-heading reveal">THE<br>ORDERS</h2>
+<section id="directives" class="directives-section">
+<div class="section-label">03 — Directives</div>
+<h2 class="section-title">THE ORDERS</h2>
 
-  <div class="directive-row reveal">
-    <div class="d-num">01</div>
-    <div class="d-content">
-      <div class="d-title">Organize Your District</div>
-      <p class="d-desc">Find the like-minded in your area. Build cells of committed individuals. Unity is strength — fragmentation is the enemy's greatest weapon.</p>
-    </div>
-  </div>
-
-  <div class="directive-row reveal" style="transition-delay:0.1s">
-    <div class="d-num">02</div>
-    <div class="d-content">
-      <div class="d-title">Amplify The Message</div>
-      <p class="d-desc">Share the manifesto. Spread the word through every channel available. Every new voice joined is a crack in the old foundation.</p>
-    </div>
-  </div>
-
-  <div class="directive-row reveal" style="transition-delay:0.2s">
-    <div class="d-num">03</div>
-    <div class="d-content">
-      <div class="d-title">Train And Prepare</div>
-      <p class="d-desc">Mental discipline, physical readiness, strategic thinking. The vanguard is sharp in mind and body, ready for whatever the dawn demands.</p>
-    </div>
-  </div>
-
-  <div class="directive-row reveal" style="transition-delay:0.3s">
-    <div class="d-num">04</div>
-    <div class="d-content">
-      <div class="d-title">Hold The Line</div>
-      <p class="d-desc">When pressure comes — and it will — the vanguard does not break. We have committed to the long game. Endurance is a revolutionary act.</p>
-    </div>
-  </div>
+<div class="directive">
+<div class="d-num">01</div>
+<div>
+<div class="d-title">Organize Your District</div>
+<p class="d-desc">Find the like-minded in your area. Build cells of committed individuals. Unity is strength — fragmentation is the enemy's greatest weapon.</p>
+</div>
+</div>
+<div class="directive">
+<div class="d-num">02</div>
+<div>
+<div class="d-title">Amplify The Message</div>
+<p class="d-desc">Share the manifesto. Spread the word through every channel available. Every new voice joined is a crack in the old foundation.</p>
+</div>
+</div>
+<div class="directive">
+<div class="d-num">03</div>
+<div>
+<div class="d-title">Train And Prepare</div>
+<p class="d-desc">Mental discipline, physical readiness, strategic thinking. The vanguard is sharp in mind and body, ready for whatever the dawn demands.</p>
+</div>
+</div>
+<div class="directive">
+<div class="d-num">04</div>
+<div>
+<div class="d-title">Hold The Line</div>
+<p class="d-desc">When pressure comes — and it will — the vanguard does not break. We have committed to the long game. Endurance is a revolutionary act.</p>
+</div>
+</div>
 </section>
 
-<!-- JOIN -->
-<section class="join-section" id="join">
-  <h2 class="join-heading reveal">JOIN THE<br><span>RESISTANCE</span></h2>
-  <p class="join-sub reveal" style="transition-delay:0.1s">History doesn't wait. The revolution is being built right now, by people who showed up. Will you be one of them?</p>
-
-  <!-- Email contact form -->
-  <div class="contact-form-wrap reveal" style="transition-delay:0.15s">
-    <h3>Send Us Your Message</h3>
-    <form class="contact-form" id="contactForm">
-      <textarea
-        name="message"
-        placeholder="Write your message, share your story, or tell us how you want to get involved..."
-        required
-      ></textarea>
-      <div class="form-actions">
-        <button type="submit" class="btn-send">
-          Send Message
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9z"/></svg>
-        </button>
-      </div>
-      <p class="form-note">Messages go directly to <a href="/cdn-cgi/l/email-protection#5525273a3f303621233c233439342730233a3920213c3a3b1525273a213a3b7b3830"><span class="__cf_email__" data-cfemail="5525273a3f303621233c233439342730233a3920213c3a3b1525273a213a3b7b3830">[email&#160;protected]</span></a></p>
-    </form>
-    <div class="form-success" id="formSuccess">
-      ✊ Message received. Thank you for standing up. We'll be in touch.
-    </div>
-  </div>
-
-  <!-- TikTok + Donate buttons -->
-  <div class="action-row reveal" style="transition-delay:0.2s">
-    <a href="https://www.tiktok.com/@viva.la.rev0luti0n" target="_blank" rel="noopener noreferrer" class="btn-tiktok">
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/>
-      </svg>
-      Follow on TikTok
-    </a>
-
-    <a href="https://www.gofundme.com/f/project-terra-nova/cl/o?utm_campaign=fp_sharesheet&utm_content=amp17_tc&utm_medium=customer&utm_source=copy_link&lang=en_US&attribution_id=sl%3A3867e05c-3f47-4fea-8bba-01127b4a6ea9&ts=1771837523"
-       class="btn-donate"
-       target="_blank" rel="noopener noreferrer">
-      ✊ Donate Now
-    </a>
-  </div>
+<section id="join" class="join-section">
+<h2>JOIN THE <span>VANGUARD</span></h2>
+<p>History doesn't wait. The revolution is being built right now, by people who showed up. Will you be one of them?</p>
+<div class="join-form">
+<input type="email" placeholder="Enter your email address">
+<button>Enlist Now</button>
+</div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/>
-    </svg>
-    TERRA NOVA
-  </div>
-
-  <div class="footer-social">
-    <a href="https://www.tiktok.com/@viva.la.rev0luti0n" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/>
-      </svg>
-      @viva.la.rev0luti0n
-    </a>
-  </div>
-
-  <div class="footer-copy">© 2026 The People. All rights reserved.</div>
+<div class="footer-logo">🔥 TERRA NOVA</div>
+<div class="footer-copy">© 2026 The Vanguard. All rights reserved.</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-reveals.forEach(r => observer.observe(r));
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-// Contact form — opens mailto
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const message = encodeURIComponent(this.querySelector('textarea').value);
-  const subject = encodeURIComponent('Terra Nova — Message from the Resistance');
-  window.location.href = `mailto:projectvivalarevolution@proton.me?subject=${subject}&body=${message}`;
-  this.s
-
-
+</body>
+</html>
